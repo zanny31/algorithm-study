@@ -82,3 +82,11 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+
+
+### 인사이트
+- 중복 제거 : Set 이용
+- 제너릭 클래스는 객체만 저장 가능 : HashSet<Integer> (o) , HashSet<int> (x)
+- 더 작은 값 리턴하는 방법으로 Math.min()을 이용할 수 있음 (직관적)
+- 배열 개수 구하기 : x.length; / Set 개수 구하기 : x.size();
