@@ -85,7 +85,7 @@
 
 
 
-### 인사이트
+### 학습 포인트
 - 중복 제거 : Set 이용
 - 제너릭 클래스는 객체만 저장 가능 : HashSet<Integer> (o) , HashSet<int> (x)
 - 원래는 int 배열 -> List -> Set의 과정을 거쳐 변경하려고 했으나 배열의 Type이 Integer가 아닌 int라 해당 방법으로 구현할 수 없었음
