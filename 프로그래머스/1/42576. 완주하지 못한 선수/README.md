@@ -75,3 +75,111 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+### 학습 포인트
+1. 처음엔 A 배열인 participant의 값으로 B 배열인 completion과 비교하면서 동일 여부를 체크했음. 근데 동명이인 문제 때문에 해결이 안됨
+```
+class Solution {
+    public String solution(String[] participant, String[] completion) {
+        String answer = "";
+        
+        for(String runner : participant ){
+            boolean state = false; 
+            if()
+            for(String finishRunner : completion){
+                if(runner.equals(finishRunner)){
+                    state = true;
+                }
+            }
+            
+            if(state == false){
+                answer = runner;
+                break;
+            }
+        }
+        
+        return answer;
+    }
+}
+``` 
+
+2. 배열이 아닌 ArrayList로 변경 후 제거하는 방향으로 코드 수정함. 
+정확성 테스트는 모두 통과했지만, 효율성 테스트에서 시간이 초과되어 실패. (성능 이슈) 
+```
+import java.util.ArrayList;
+import java.util.Arrays;
+
+class Solution {
+    public String solution(String[] participant, String[] completion) {
+        String answer = "";
+        
+        ArrayList<String> participantList = new ArrayList<>(Arrays.asList(participant));
+        
+        for(String runner : completion){
+            if(participantList.contains(runner)){
+                participantList.remove(runner);
+            }
+        }
+        
+        answer = participantList.get(0);
+        
+        return answer;
+    }
+}
+```
+
+
+
+3. 다른 분이 작성한 풀이를 참고하여, 배열들을 정렬한 후 서로 비교하는 방식으로 코드를 구현함.
+   마지막에 participant[participant.length - 1]을 사용하는 이유는, participant 배열의 마지막에 완주하지 않은 사람이 있다면 for문으로 비교할 수 없기 때문
+```
+
+class Solution {
+    public String solution(String[] participant, String[] completion) {
+        String answer = "";
+        
+        Arrays.sort(participant);
+        Arrays.sort(completion);
+        
+        for(int i = 0; i < completion.length; i++) {
+            if(!participant[i].equals(completion[i])) {
+                answer = participant[i];
+                return answer;
+            }
+        }
+ 
+        answer = participant[participant.length - 1];
+        return answer;
+
+    }
+}
+``` 
+   
+
+4. 좀 더 찾아보니 HashMap을 이용한 문제 풀이 방법도 있었다.
+HashMap에서 동일한 key 개수를 구할 수 있다. `x.getOrDefault`
+왜 +1을 하는지 궁금했는데, 숫자를 깔끔하게 맞추기 위함이었다.
++1을 안하면 `cm.get(runner) == 0`가 아닌 `cm.get(runner) == -1`로 구현해야 한다.. 
+
+```
+class Solution {
+    public String solution(String[] participant, String[] completion) {
+        String answer = "";
+        HashMap<String, Integer> cm = new HashMap<>();
+        
+        for(String finishRunner : completion){
+            cm.put(finishRunner, cm.getOrDefault(finishRunner,0)+1);
+        }
+        
+        for(String runner : participant){
+            if(!cm.containsKey(runner) || cm.get(runner) == 0){
+                return runner;
+            } else {
+                cm.put(runner, cm.get(runner) - 1);
+            }
+        }
+        
+        return answer;
+    }
+}
+```
