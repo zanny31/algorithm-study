@@ -88,5 +88,9 @@
 ### 인사이트
 - 중복 제거 : Set 이용
 - 제너릭 클래스는 객체만 저장 가능 : HashSet<Integer> (o) , HashSet<int> (x)
+- 원래는 int 배열 -> List -> Set의 과정을 거쳐 변경하려고 했으나 배열의 Type이 Integer가 아닌 int라 해당 방법으로 구현할 수 없었음
+  ```
+  HashSet<Integer> x = new HashSet(Arrays.asList(nums)); 
+  ```
 - 더 작은 값 리턴하는 방법으로 Math.min()을 이용할 수 있음 (직관적)
 - 배열 개수 구하기 : x.length; / Set 개수 구하기 : x.size();
