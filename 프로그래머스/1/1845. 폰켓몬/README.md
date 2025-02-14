@@ -1,10 +1,10 @@
 # [level 1] 폰켓몬 - 1845 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/1845?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/1845) 
 
 ### 성능 요약
 
-메모리: 89.4 MB, 시간: 5.74 ms
+메모리: 77.8 MB, 시간: 3.08 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 01월 21일 13:45:50
+2025년 02월 14일 13:51:37
 
 ### 문제 설명
 
@@ -82,15 +82,3 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
-
-
-
-### 학습 포인트
-- 중복 제거 : Set 이용
-- 제너릭 클래스는 객체만 저장 가능 : HashSet<Integer> (o) , HashSet<int> (x)
-- 원래는 int 배열 -> List -> Set의 과정을 거쳐 변경하려고 했으나 배열의 Type이 Integer가 아닌 int라 해당 방법으로 구현할 수 없었음
-  ```
-  HashSet<Integer> x = new HashSet(Arrays.asList(nums)); 
-  ```
-- 더 작은 값 리턴하는 방법으로 Math.min()을 이용할 수 있음 (직관적)
-- 배열 개수 구하기 : x.length; / Set 개수 구하기 : x.size();
